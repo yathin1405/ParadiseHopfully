@@ -18,9 +18,11 @@ namespace ParadiseHopfully.Models
         public string First_Name { get; set; }
         [Display(Name = "Last Name")]
         public string Last_Name { get; set; }
+        
         [Display(Name = "Email Address")]
-        public String Address { get; set; }
-        [Display(Name = "ID Number")]
+        [Required(ErrorMessage = "Email address  is required")]
+        [DataType(DataType.EmailAddress)]
+        public string Email { get; set; }
         public string IDNum { get; set; }
 
         [Display(Name = "Cruise Booking")]
@@ -59,7 +61,18 @@ namespace ParadiseHopfully.Models
         [Required(ErrorMessage = "Price Required")]
         public float Price { get; set; }
 
-        
+        //public string GetEmail()
+        //{
+        //    ApplicationDbContext db = new ApplicationDbContext();
+        //    var Tempemail = (from i in db.Get_Quote where i.UserID == UserID select i.Email).SingleOrDefault();
+        //    return (Convert.ToString(Tempemail));
+        //}
+        //public string GetUsername()
+        //{
+        //    ApplicationDbContext db = new ApplicationDbContext();
+        //    var Tempusername = (from i in db.Get_Quote where i.UserID == UserID select i.Username).SingleOrDefault();
+        //    return (Convert.ToString(Tempusername));
+        //}
         public double deposit { get; set; }
         public string determineKey()
         {
@@ -77,5 +90,51 @@ namespace ParadiseHopfully.Models
             r = firstTwo + nextTwo + d + "";
             return r + "";
         }
+        //public static void BuildEmailTemplate(string sendto, string cid)
+        //{
+        //    string from, to, bcc, cc, subject, body;
+        //    from = "testEmail@gmail.com";
+        //    to = sendto.Trim();
+        //    bcc = "";
+        //    cc = "";
+        //    subject = "Quote";
+        //    StringBuilder sb = new StringBuilder();
+        //    sb.Append("Your quote : ");
+        //    body = sb.ToString() + cid + ".\n ";
+        //    MailMessage mail = new MailMessage();
+        //    mail.From = new MailAddress(from);
+        //    mail.To.Add(new MailAddress(to));
+        //    if (!string.IsNullOrEmpty(bcc))
+        //    {
+        //        mail.Bcc.Add(new MailAddress(bcc));
+        //    }
+        //    if (!string.IsNullOrEmpty(cc))
+        //    {
+        //        mail.CC.Add(new MailAddress(cc));
+        //    }
+        //    mail.Subject = subject;
+        //    mail.Body = body;
+        //    mail.IsBodyHtml = true;
+        //    SendEmail(mail);
+        //}
+
+        //public static void SendEmail(MailMessage mail)
+        //{
+        //    SmtpClient client = new SmtpClient();
+        //    client.Host = "smtp.gmail.com";
+        //    client.Port = 587;
+        //    client.EnableSsl = true;
+        //    client.UseDefaultCredentials = false;
+        //    client.DeliveryMethod = SmtpDeliveryMethod.Network;
+        //    client.Credentials = new System.Net.NetworkCredential("testEmail@gmail.com", "project123");
+        //    try
+        //    {
+        //        client.Send(mail);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
     }
 }

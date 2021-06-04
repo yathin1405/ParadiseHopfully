@@ -9,6 +9,20 @@ namespace ParadiseHopfully.Models
 {
     public class Cruise
     {
+        public enum From
+        {
+            JHB,
+            Durban,
+            Capetown,
+
+        }
+        public enum To
+        {
+            JHB,
+            Durban,
+            Capetown,
+
+        }
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
         [Display(Name = "Cruise ID")]
@@ -25,10 +39,10 @@ namespace ParadiseHopfully.Models
         [Display(Name = "Guest Type")]
         public string Guest_Type{ get; set; }
 
-        [Display(Name = "From")]
-        public string LocationFrom { get; set; }
-        [Display(Name = "TO")]
-        public string LocationTO { get; set; }
+        //[Display(Name = "From")]
+        //public string LocationFrom { get; set; }
+        //[Display(Name = "TO")]
+        //public string LocationTO { get; set; }
 
         [Display(Name = "Departure Date")]
         [DataType(DataType.Date)]
@@ -58,27 +72,27 @@ namespace ParadiseHopfully.Models
         {
 
             double deposit = 0;
-            if (Price <= 150)
+            if (Price <= 15000)
             {
                 deposit = Price * 0.15;
             }
             else
-                if (Price > 150 && Price <= 300)
+                if (Price > 15000 && Price <= 30000)
             {
                 deposit = Price * 0.20;
             }
             else
-                if (Price > 300 && Price <= 500)
+                if (Price > 30000 && Price <= 50000)
             {
                 deposit = Price * 0.25;
             }
             else
-                if (Price > 500 && Price <= 800)
+                if (Price > 50000 && Price <= 80000)
             {
                 deposit = Price * 0.30;
             }
             else
-                if (Price > 800)
+                if (Price > 80000)
             {
                 deposit = Price * 0.40;
             }
